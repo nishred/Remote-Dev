@@ -18,7 +18,6 @@ import { useContext } from "react";
 import { SearchTextContext } from "../contexts/SearchTextContextProvider";
 
 function App() {
-
   const { searchText, handleChangeSearchText } = useContext(SearchTextContext);
 
   return (
@@ -46,12 +45,9 @@ function App() {
           <JobListSearch />
           <PaginationControls />
         </Sidebar>
-        
+
         <JobItemContent />
-
-
       </Container>
-
 
       <Footer />
 

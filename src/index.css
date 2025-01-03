@@ -286,20 +286,22 @@ body::-webkit-scrollbar {
   /* opacity: 0; */
   background-color: #fff;
   min-height: 76px;
+  max-height: 500px;
   min-width: 340px;
   width: 340px;
   border-radius: 4px;
-  overflow: hidden;
-  z-index: 10;
+  overflow-y:auto;
+  z-index: 50;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
   transform: translateX(-50%);
   transform-origin: left;
   transition: all 0.2s;
+  color: black;
   /* pointer-events: none; */
 
-  position: fixed;
-  left: 50%;
-  top: 82px;
+  position: absolute;
+  /* left: 50%; */
+  top: 100%;
 }
 
 .job-list--bookmarks {
@@ -384,6 +386,7 @@ body::-webkit-scrollbar {
   align-items: center;
   font-weight: 600;
   margin-right: 13px;
+  text-transform: uppercase;
 }
 
 /* .job-item:nth-child(4n + 2) .job-item__badge {
@@ -399,6 +402,8 @@ body::-webkit-scrollbar {
 } */
 
 .job-item__middle {
+  text-transform: capitalize;
+  text-align: initial;
 }
 
 .job-item__company {

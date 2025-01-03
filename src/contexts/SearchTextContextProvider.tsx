@@ -14,6 +14,7 @@ export default function SearchTextContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  
   const [searchText, setSearchText] = useState("");
   const debouncedSearchText = useDebounce(searchText, 250);
 

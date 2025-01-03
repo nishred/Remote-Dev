@@ -9,6 +9,8 @@ export default function BookmarksButton() {
   const popoverRef = useRef<HTMLDivElement>(null);
   useOnClickOutside([buttonRef, popoverRef], () => setIsOpen(false));
 
+  console.log(isOpen);
+
   return (
     <section>
       <button
@@ -17,9 +19,8 @@ export default function BookmarksButton() {
         className="bookmarks-btn"
       >
         Bookmarks <TriangleDownIcon />
+        {isOpen && <BookmarksPopover ref={popoverRef} />}
       </button>
-
-      {isOpen && <BookmarksPopover ref={popoverRef} />}
     </section>
   );
 }

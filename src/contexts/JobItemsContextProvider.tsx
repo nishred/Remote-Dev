@@ -3,6 +3,7 @@ import { useSearchQuery, useSearchTextContext } from "../lib/hooks";
 import { RESULTS_PER_PAGE } from "../lib/constants";
 import { SortBy, PageDirection, JobItem } from "../lib/types";
 
+
 type JobItemsContext = {
   jobItems: JobItem[] | undefined;
   jobItemsSortedAndSliced: JobItem[];
@@ -26,7 +27,8 @@ export default function JobItemsContextProvider({
   const { debouncedSearchText } = useSearchTextContext();
 
   // state
-  const { jobItems, isLoading } = useSearchQuery(debouncedSearchText);
+  const { jobItems, isLoading} = useSearchQuery(debouncedSearchText);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState<SortBy>("relevant");
 
@@ -44,6 +46,7 @@ export default function JobItemsContextProvider({
       }),
     [sortBy, jobItems]
   );
+
   const jobItemsSortedAndSliced = useMemo(
     () =>
       jobItemsSorted.slice(
@@ -61,6 +64,8 @@ export default function JobItemsContextProvider({
       setCurrentPage((prev) => prev - 1);
     }
   }, []);
+
+
   const handleChangeSortBy = useCallback((newSortBy: SortBy) => {
     setCurrentPage(1);
     setSortBy(newSortBy);
@@ -97,3 +102,6 @@ export default function JobItemsContextProvider({
     </JobItemsContext.Provider>
   );
 }
+
+
+

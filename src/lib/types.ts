@@ -1,3 +1,5 @@
+
+
 export type JobItem = {
   id: number;
   badgeLetters: string;

@@ -8,6 +8,7 @@ import { ActiveIdContext } from "../contexts/ActiveIdContextProvider";
 import { SearchTextContext } from "../contexts/SearchTextContextProvider";
 import { JobItemsContext } from "../contexts/JobItemsContextProvider";
 
+
 type JobItemApiResponse = {
   public: boolean;
   jobItem: JobItemExpanded;
@@ -24,6 +25,7 @@ const fetchJobItem = async (id: number): Promise<JobItemApiResponse> => {
   const data = await response.json();
   return data;
 };
+
 
 export function useJobItem(id: number | null) {
   
@@ -46,6 +48,8 @@ export function useJobItem(id: number | null) {
 }
 
 export function useJobItems(ids: number[]) {
+
+
   const results = useQueries({
     queries: ids.map((id) => ({
       queryKey: ["job-item", id],
@@ -57,6 +61,8 @@ export function useJobItems(ids: number[]) {
       onError: handleError,
     })),
   });
+
+
 
   const jobItems = results
     .map((result) => result.data?.jobItem)
@@ -93,6 +99,7 @@ const fetchJobItems = async (
 };
 
 export function useSearchQuery(searchText: string) {
+
   const { data, isInitialLoading } = useQuery(
     ["job-items", searchText],
     () => fetchJobItems(searchText),
@@ -146,10 +153,12 @@ export function useActiveId() {
   return activeId;
 }
 
+
 export function useLocalStorage<T>(
   key: string,
   initialValue: T
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
+
   const [value, setValue] = useState(() =>
     JSON.parse(localStorage.getItem(key) || JSON.stringify(initialValue))
   );
@@ -221,3 +230,4 @@ export function useJobItemsContext() {
   }
   return context;
 }
+
